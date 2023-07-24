@@ -6,8 +6,6 @@ import (
 	"github.com/nsf/termbox-go"
 )
 
-var tbcell termbox.Cell
-
 func displayCell(cells []Cell, t, count, width, numDays int, gui int) {
 
 	// icons
@@ -59,66 +57,66 @@ func displayCell(cells []Cell, t, count, width, numDays int, gui int) {
 		for _, cell := range cells {
 			if cell.Empty {
 				if cell.Y%2 != 0 {
-					tbcell = termbox.GetCell(cell.X, (cell.Y+1)/2)
-					termbox.SetCell(cell.X, (cell.Y+1)/2, ' ', tbcell.Fg, termbox.ColorBlack)
+					termbox.SetChar(cell.X, (cell.Y+1)/2, ' ')
+					termbox.SetBg(cell.X, (cell.Y+1)/2, termbox.ColorBlack)
 				} else {
-					tbcell = termbox.GetCell(cell.X, cell.Y/2)
-					termbox.SetCell(cell.X, cell.Y/2, '▄', termbox.ColorBlack, tbcell.Bg)
+					termbox.SetChar(cell.X, cell.Y/2, '▄')
+					termbox.SetFg(cell.X, cell.Y/2, termbox.ColorBlack)
 				}
 			} else {
 				if cell.Died {
 					if cell.Y%2 != 0 {
-						tbcell = termbox.GetCell(cell.X, (cell.Y+1)/2)
-						termbox.SetCell(cell.X, (cell.Y+1)/2, ' ', tbcell.Fg, termbox.ColorWhite)
+						termbox.SetChar(cell.X, (cell.Y+1)/2, ' ')
+						termbox.SetBg(cell.X, (cell.Y+1)/2, termbox.ColorWhite)
 					} else {
-						tbcell = termbox.GetCell(cell.X, cell.Y/2)
-						termbox.SetCell(cell.X, cell.Y/2, '▄', termbox.ColorWhite, tbcell.Bg)
+						termbox.SetChar(cell.X, cell.Y/2, '▄')
+						termbox.SetFg(cell.X, cell.Y/2, termbox.ColorWhite)
 					}
 				} else {
 					if cell.Confined {
 						if cell.Y%2 != 0 {
-							tbcell = termbox.GetCell(cell.X, (cell.Y+1)/2)
-							termbox.SetCell(cell.X, (cell.Y+1)/2, ' ', tbcell.Fg, termbox.ColorBlue)
+							termbox.SetChar(cell.X, (cell.Y+1)/2, ' ')
+							termbox.SetBg(cell.X, (cell.Y+1)/2, termbox.ColorBlue)
 						} else {
-							tbcell = termbox.GetCell(cell.X, cell.Y/2)
-							termbox.SetCell(cell.X, cell.Y/2, '▄', termbox.ColorBlue, tbcell.Bg)
+							termbox.SetChar(cell.X, cell.Y/2, '▄')
+							termbox.SetFg(cell.X, cell.Y/2, termbox.ColorBlue)
 						}
 					} else {
 						if cell.Infected {
 							if cell.Incubation > 0 {
 								if cell.Y%2 != 0 {
-									tbcell = termbox.GetCell(cell.X, (cell.Y+1)/2)
-									termbox.SetCell(cell.X, (cell.Y+1)/2, ' ', tbcell.Fg, termbox.ColorYellow)
+									termbox.SetChar(cell.X, (cell.Y+1)/2, ' ')
+									termbox.SetBg(cell.X, (cell.Y+1)/2, termbox.ColorYellow)
 								} else {
-									tbcell = termbox.GetCell(cell.X, cell.Y/2)
-									termbox.SetCell(cell.X, cell.Y/2, '▄', termbox.ColorYellow, tbcell.Bg)
+									termbox.SetChar(cell.X, cell.Y/2, '▄')
+									termbox.SetFg(cell.X, cell.Y/2, termbox.ColorYellow)
 								}
 							} else {
 								if cell.Y%2 != 0 {
-									tbcell = termbox.GetCell(cell.X, (cell.Y+1)/2)
-									termbox.SetCell(cell.X, (cell.Y+1)/2, ' ', tbcell.Fg, termbox.ColorRed)
+									termbox.SetChar(cell.X, (cell.Y+1)/2, ' ')
+									termbox.SetBg(cell.X, (cell.Y+1)/2, termbox.ColorRed)
 								} else {
-									tbcell = termbox.GetCell(cell.X, cell.Y/2)
-									termbox.SetCell(cell.X, cell.Y/2, '▄', termbox.ColorRed, tbcell.Bg)
+									termbox.SetChar(cell.X, cell.Y/2, '▄')
+									termbox.SetFg(cell.X, cell.Y/2, termbox.ColorRed)
 								}
 							}
 						} else {
 
 							if cell.Recovery > 0 && cell.Critical == 0 && cell.Incubation == 0 {
 								if cell.Y%2 != 0 {
-									tbcell = termbox.GetCell(cell.X, (cell.Y+1)/2)
-									termbox.SetCell(cell.X, (cell.Y+1)/2, ' ', tbcell.Fg, termbox.ColorCyan)
+									termbox.SetChar(cell.X, (cell.Y+1)/2, ' ')
+									termbox.SetBg(cell.X, (cell.Y+1)/2, termbox.ColorCyan)
 								} else {
-									tbcell = termbox.GetCell(cell.X, cell.Y/2)
-									termbox.SetCell(cell.X, cell.Y/2, '▄', termbox.ColorCyan, tbcell.Bg)
+									termbox.SetChar(cell.X, cell.Y/2, '▄')
+									termbox.SetFg(cell.X, cell.Y/2, termbox.ColorCyan)
 								}
 							} else {
 								if cell.Y%2 != 0 {
-									tbcell = termbox.GetCell(cell.X, (cell.Y+1)/2)
-									termbox.SetCell(cell.X, (cell.Y+1)/2, ' ', tbcell.Fg, termbox.ColorGreen)
+									termbox.SetChar(cell.X, (cell.Y+1)/2, ' ')
+									termbox.SetBg(cell.X, (cell.Y+1)/2, termbox.ColorGreen)
 								} else {
-									tbcell = termbox.GetCell(cell.X, cell.Y/2)
-									termbox.SetCell(cell.X, cell.Y/2, '▄', termbox.ColorGreen, tbcell.Bg)
+									termbox.SetChar(cell.X, cell.Y/2, '▄')
+									termbox.SetFg(cell.X, cell.Y/2, termbox.ColorGreen)
 								}
 							}
 						}
